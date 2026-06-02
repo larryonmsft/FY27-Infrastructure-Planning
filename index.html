@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FY27 Mid-Atlantic Infrastructure Strategy Plan</title>
+  <style>
+    :root {
+      --ms-blue-900: #0f3b68;
+      --ms-blue-700: #115ea3;
+      --ms-blue-500: #2b88d8;
+      --ms-blue-100: #dcefff;
+      --ms-gray-900: #1f2933;
+      --ms-gray-700: #4b5563;
+      --ms-gray-500: #6b7280;
+      --ms-gray-200: #d1d5db;
+      --ms-gray-100: #eef2f7;
+      --ms-white: #ffffff;
+      --success: #1f7a43;
+      --warning: #a16207;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --shadow-soft: 0 8px 24px rgba(15, 59, 104, 0.08);
+      --shadow-hover: 0 12px 32px rgba(17, 94, 163, 0.16);
+      --section-gap: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--ms-gray-900);
+      background:
+        radial-gradient(1200px 600px at 95% -10%, rgba(43, 136, 216, 0.18), transparent 60%),
+        radial-gradient(1000px 500px at -10% 10%, rgba(17, 94, 163, 0.1), transparent 70%),
+        linear-gradient(180deg, #f6f9fd 0%, #f9fbff 35%, #f5f8fc 100%);
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      padding: 22px 0 40px;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(209, 213, 219, 0.8);
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 22px rgba(15, 59, 104, 0.1);
+      padding: 8px;
+      margin: 6px 0 18px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .top-nav a {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--ms-blue-900);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .top-nav a:hover,
+    .top-nav a.active {
+      background: var(--ms-blue-700);
+      color: var(--ms-white);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 10%, #eff6ff 55%, #e3f0ff 100%);
+      border: 1px solid #d6e5f8;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: clamp(20px, 4vw, 32px);
+      margin-bottom: var(--section-gap);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--ms-blue-100);
+      color: var(--ms-blue-900);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ms-blue-500);
+    }
+
+    h1 {
+      margin: 12px 0 4px;
+      color: var(--ms-blue-900);
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--ms-gray-700);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      font-weight: 600;
+    }
+
+    .executive-summary {
+      margin-top: 16px;
+      background: var(--ms-white);
+      border-left: 4px solid var(--ms-blue-500);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      color: var(--ms-gray-700);
+    }
+
+    section {
+      margin-bottom: var(--section-gap);
+      background: var(--ms-white);
+      border: 1px solid #e4e8ef;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: clamp(18px, 3vw, 28px);
+    }
+
+    .section-header {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ms-gray-200);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+      color: var(--ms-blue-900);
+    }
+
+    .section-subtitle {
+      margin-top: 6px;
+      color: var(--ms-gray-700);
+      font-size: 0.95rem;
+    }
+
+    h3 {
+      margin: 16px 0 10px;
+      color: var(--ms-blue-700);
+      font-size: 1.1rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid #dfe8f5;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card h4 {
+      margin: 0 0 10px;
+      color: var(--ms-blue-900);
+      font-size: 1rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      background: #eef5ff;
+      color: #09447a;
+      border: 1px solid #cfe1f8;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid #dfe4ee;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      border-bottom: 1px solid #e7ebf2;
+      padding: 11px 10px;
+      vertical-align: top;
+      font-size: 0.9rem;
+    }
+
+    thead th {
+      background: #edf4ff;
+      color: var(--ms-blue-900);
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tbody tr:hover {
+      background: #f8fbff;
+    }
+
+    .tag-major {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: #d8ebff;
+      color: #0e4f8a;
+      border: 1px solid #b8d7f7;
+      margin-left: 6px;
+    }
+
+    .kpi-strip {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 12px;
+    }
+
+    .kpi {
+      border: 1px solid #dce6f5;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #f9fcff 0%, #f2f8ff 100%);
+      padding: 12px;
+    }
+
+    .kpi .label {
+      color: var(--ms-gray-700);
+      font-size: 0.8rem;
+    }
+
+    .kpi .value {
+      color: var(--ms-blue-900);
+      margin-top: 4px;
+      font-weight: 800;
+      font-size: 1.3rem;
+    }
+
+    .impact-high {
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .impact-medium {
+      color: var(--warning);
+      font-weight: 700;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--ms-gray-500);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1000px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: 94vw;
+        padding-top: 12px;
+      }
+
+      .top-nav {
+        border-radius: 14px;
+      }
+
+      .kpi-strip {
+        grid-template-columns: 1fr;
+      }
+
+      th,
+      td {
+        font-size: 0.84rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="top-nav" aria-label="Page navigation">
+      <a href="#header">Header</a>
+      <a href="#territory-analysis">Territory Analysis</a>
+      <a href="#events-plan">Seminars & Events</a>
+      <a href="#lab-strategy">Lab Strategy</a>
+      <a href="#vertical-strategies">Vertical Strategies</a>
+      <a href="#innovative-strategies">Innovation</a>
+      <a href="#impact-dashboard">Impact Dashboard</a>
+    </nav>
+
+    <header id="header" class="hero">
+      <span class="eyebrow">FY27 Territory Planning</span>
+      <h1>FY27 Mid-Atlantic Infrastructure Strategy Plan</h1>
+      <p class="subtitle">Infrastructure Solution Engineer | Public Sector (EDU, SLG, AMC)</p>
+      <div class="executive-summary">
+        <strong>Executive Summary:</strong>
+        The FY27 strategy focuses on accelerating Azure adoption across Mid-Atlantic public sector accounts by combining executive seminars, technical workshops, and repeatable hands-on labs.
+        The plan aligns vertical business priorities with modernization motions that move customers from discovery to pilot and into funded implementation.
+        It emphasizes Azure Landing Zones, migration and modernization, resiliency, and secure AI-ready platforms to drive measurable workload expansion.
+        Quarterly flagship events and monthly targeted engagements are designed to increase qualified pipeline, executive sponsorship, and cross-workload adoption.
+      </div>
+    </header>
+
+    <section id="territory-analysis">
+      <div class="section-header">
+        <h2>2. Territory Analysis (High-Level)</h2>
+        <p class="section-subtitle">Mid-Atlantic priorities shaped by budget pressure, compliance requirements, and demand for secure modernization at scale.</p>
+      </div>
+
+      <div class="kpi-strip">
+        <div class="kpi">
+          <div class="label">Common Challenges</div>
+          <div class="value">Legacy + Skill Gaps</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Cloud Maturity Trend</div>
+          <div class="value">Hybrid to Modern</div>
+        </div>
+        <div class="kpi">
+          <div class="label">AI Readiness</div>
+          <div class="value">Emerging</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Top Opportunity Areas</div>
+          <div class="value">Migration, DR, Security, VDI</div>
+        </div>
+      </div>
+
+      <div class="grid grid-3" style="margin-top: 14px;">
+        <article class="card">
+          <h3>Education (EDU)</h3>
+          <h4>Top Business Drivers</h4>
+          <p>Cost optimization, digital campus experiences, scalable research platforms, and student service resiliency.</p>
+          <h4>Key Technical Challenges</h4>
+          <p>Fragmented datacenter operations, aging VDI estates, inconsistent identity/security controls, and limited cloud architecture bandwidth.</p>
+          <h4>What Customers Want</h4>
+          <p>Clear modernization roadmaps, rapid time-to-value pilots, and budget-aligned operating models that show measurable service quality improvements.</p>
+          <h4>Recommended Azure Focus Areas</h4>
+          <div class="pill-row">
+            <span class="pill">Azure Landing Zones</span>
+            <span class="pill">AVD Campus VDI</span>
+            <span class="pill">Data Platform Security</span>
+            <span class="pill">HPC / Research Compute</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>State &amp; Local Government (SLG)</h3>
+          <h4>Top Business Drivers</h4>
+          <p>Citizen service continuity, regulatory compliance, infrastructure resiliency, and modernization of mission-critical legacy applications.</p>
+          <h4>Key Technical Challenges</h4>
+          <p>Complex procurement cycles, constrained staffing, siloed operations, and strict governance requirements across agencies.</p>
+          <h4>What Customers Want</h4>
+          <p>Reference architectures that satisfy compliance controls, faster disaster recovery postures, and practical migration paths that reduce risk.</p>
+          <h4>Recommended Azure Focus Areas</h4>
+          <div class="pill-row">
+            <span class="pill">CJIS / FedRAMP Alignment</span>
+            <span class="pill">Azure Arc Hybrid Ops</span>
+            <span class="pill">BCDR with ASR</span>
+            <span class="pill">App Modernization</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Academic Medical Centers (AMC)</h3>
+          <h4>Top Business Drivers</h4>
+          <p>Clinical system reliability, secure PHI data operations, research acceleration, and enterprise platform standardization.</p>
+          <h4>Key Technical Challenges</h4>
+          <p>Performance-sensitive workloads, strict security/privacy controls, legacy database dependencies, and complex integration requirements.</p>
+          <h4>What Customers Want</h4>
+          <p>Low-risk workload transformation plans, improved data interoperability, and executive confidence around performance and compliance outcomes.</p>
+          <h4>Recommended Azure Focus Areas</h4>
+          <div class="pill-row">
+            <span class="pill">Epic Adjacent Modernization</span>
+            <span class="pill">SQL Modernization</span>
+            <span class="pill">Secure Data Zones</span>
+            <span class="pill">AI-Ready Data Foundations</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="events-plan">
+      <div class="section-header">
+        <h2>3. FY27 1:M Seminars &amp; Events Plan (Calendar View)</h2>
+        <p class="section-subtitle">July 2026 through June 2027 with quarterly flagship events and monthly targeted engagements.</p>
+      </div>
+      <div class="table-wrap">
+        <table aria-label="FY27 events calendar">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Event Name</th>
+              <th>Event Type</th>
+              <th>Target Audience</th>
+              <th>Topic</th>
+              <th>Description</th>
+              <th>Expected Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jul 2026</td>
+              <td>Mid-Atlantic FY27 Kickoff Briefing</td>
+              <td>Executive Briefing</td>
+              <td>EDU, SLG, AMC</td>
+              <td>Azure Strategy + Landing Zones</td>
+              <td>Regional kickoff to align CIO/CTO priorities, governance, and funding pathways for FY27 cloud programs.</td>
+              <td>Exec alignment and multi-account opportunity seeding.</td>
+            </tr>
+            <tr>
+              <td>Jul 2026</td>
+              <td>Landing Zone Design Sprint</td>
+              <td>Workshop</td>
+              <td>SLG, EDU</td>
+              <td>Azure Landing Zones</td>
+              <td>Guided architecture session to define subscription strategy, policy baselines, and operational ownership.</td>
+              <td>Pipeline creation for implementation services.</td>
+            </tr>
+
+            <tr>
+              <td>Aug 2026</td>
+              <td>Migration Readiness Clinic</td>
+              <td>Seminar</td>
+              <td>SLG, AMC</td>
+              <td>Migration &amp; Modernization</td>
+              <td>Readiness framework for assessing estate complexity, app criticality, and phased migration plans.</td>
+              <td>Assessment-to-pilot conversion and workload expansion.</td>
+            </tr>
+            <tr>
+              <td>Aug 2026</td>
+              <td>AVD for Distributed Workforce</td>
+              <td>Hands-on Lab</td>
+              <td>EDU, SLG</td>
+              <td>Azure Virtual Desktop</td>
+              <td>Hands-on deployment of secure virtual desktop patterns with identity and policy controls.</td>
+              <td>AVD pilot motions and endpoint modernization opportunities.</td>
+            </tr>
+
+            <tr>
+              <td>Sep 2026</td>
+              <td>Mid-Atlantic Cloud Resiliency Summit <span class="tag-major">Q1 Flagship</span></td>
+              <td>Seminar</td>
+              <td>EDU, SLG, AMC</td>
+              <td>Disaster Recovery / BCDR</td>
+              <td>Regional summit focused on mission continuity, recovery objectives, and resiliency operating models.</td>
+              <td>Large pipeline creation and executive urgency for BCDR programs.</td>
+            </tr>
+            <tr>
+              <td>Sep 2026</td>
+              <td>ASR Implementation Deep Dive</td>
+              <td>Workshop</td>
+              <td>SLG, AMC</td>
+              <td>Azure Site Recovery</td>
+              <td>Technical workshop on replication design, failover runbooks, and governance for DR operations.</td>
+              <td>Funded DR implementation opportunities.</td>
+            </tr>
+
+            <tr>
+              <td>Oct 2026</td>
+              <td>Secure Cloud Foundations Series</td>
+              <td>Seminar</td>
+              <td>SLG, AMC</td>
+              <td>Security &amp; Compliance</td>
+              <td>Control mapping and security posture architecture for regulated workloads across environments.</td>
+              <td>Security workload adoption and compliance acceleration.</td>
+            </tr>
+            <tr>
+              <td>Oct 2026</td>
+              <td>Hybrid Operations with Azure Arc Lab</td>
+              <td>Hands-on Lab</td>
+              <td>SLG</td>
+              <td>Hybrid Management</td>
+              <td>Lab covering onboarding, policy enforcement, and centralized operations for hybrid assets.</td>
+              <td>Hybrid modernization opportunities and service attach.</td>
+            </tr>
+
+            <tr>
+              <td>Nov 2026</td>
+              <td>Data Platform Modernization Forum</td>
+              <td>Workshop</td>
+              <td>AMC, EDU</td>
+              <td>SQL Modernization</td>
+              <td>Technical forum focused on SQL modernization patterns, performance, and managed services options.</td>
+              <td>Database migration pipeline and platform standardization.</td>
+            </tr>
+            <tr>
+              <td>Nov 2026</td>
+              <td>AI Readiness for Infrastructure Leaders</td>
+              <td>Executive Briefing</td>
+              <td>EDU, AMC</td>
+              <td>AI Readiness / Data Platform</td>
+              <td>Executive discussion on platform prerequisites, governance, and secure AI data pathways.</td>
+              <td>Exec sponsorship for AI-ready infrastructure investments.</td>
+            </tr>
+
+            <tr>
+              <td>Dec 2026</td>
+              <td>Public Sector Secure AI &amp; Data Summit <span class="tag-major">Q2 Flagship</span></td>
+              <td>Seminar</td>
+              <td>EDU, SLG, AMC</td>
+              <td>Security + AI Foundation</td>
+              <td>Cross-vertical summit linking compliance-first infrastructure with enterprise AI adoption plans.</td>
+              <td>Strategic deal acceleration and cross-workload expansion.</td>
+            </tr>
+            <tr>
+              <td>Dec 2026</td>
+              <td>Year-End Modernization Pipeline Review</td>
+              <td>Executive Briefing</td>
+              <td>EDU, SLG, AMC</td>
+              <td>Portfolio Prioritization</td>
+              <td>Account-level review to prioritize funded initiatives for H2 execution.</td>
+              <td>Pipeline quality uplift and close-plan maturity.</td>
+            </tr>
+
+            <tr>
+              <td>Jan 2027</td>
+              <td>Modernize Legacy Apps Fast Track</td>
+              <td>Workshop</td>
+              <td>SLG, AMC</td>
+              <td>Migration &amp; App Modernization</td>
+              <td>Prescriptive modernization paths with architecture patterns, milestones, and partner execution model.</td>
+              <td>Legacy app migration opportunity generation.</td>
+            </tr>
+            <tr>
+              <td>Jan 2027</td>
+              <td>Campus Productivity with AVD</td>
+              <td>Seminar</td>
+              <td>EDU</td>
+              <td>Azure Virtual Desktop</td>
+              <td>Campus-focused seminar on lab modernization, secure access, and student/staff digital experience.</td>
+              <td>AVD landing opportunities across higher education institutions.</td>
+            </tr>
+
+            <tr>
+              <td>Feb 2027</td>
+              <td>Business Continuity Playbook Workshop</td>
+              <td>Workshop</td>
+              <td>SLG, EDU</td>
+              <td>Disaster Recovery / BCDR</td>
+              <td>Joint planning workshop on service tiering, RTO/RPO targets, and tested recovery procedures.</td>
+              <td>BCDR program pipeline and strategic account penetration.</td>
+            </tr>
+            <tr>
+              <td>Feb 2027</td>
+              <td>Secure Infrastructure Governance Lab</td>
+              <td>Hands-on Lab</td>
+              <td>SLG, AMC</td>
+              <td>Security &amp; Compliance</td>
+              <td>Hands-on governance implementation for policy, identity, and monitoring controls in Azure.</td>
+              <td>Compliance-aligned infrastructure adoption.</td>
+            </tr>
+
+            <tr>
+              <td>Mar 2027</td>
+              <td>Regional Migration Factory Day <span class="tag-major">Q3 Flagship</span></td>
+              <td>Hands-on Lab</td>
+              <td>EDU, SLG, AMC</td>
+              <td>Migration at Scale</td>
+              <td>One-day migration execution sprint with account teams, architects, and partners on active opportunities.</td>
+              <td>Assessment-to-POC velocity and near-term workload activation.</td>
+            </tr>
+            <tr>
+              <td>Mar 2027</td>
+              <td>Azure Landing Zones Governance Forum</td>
+              <td>Seminar</td>
+              <td>EDU, SLG</td>
+              <td>Azure Landing Zones</td>
+              <td>Governance-focused seminar to standardize controls and operating models across complex organizations.</td>
+              <td>Landing zone expansion and service-driven pipeline.</td>
+            </tr>
+
+            <tr>
+              <td>Apr 2027</td>
+              <td>Clinical &amp; Research Data Modernization</td>
+              <td>Workshop</td>
+              <td>AMC</td>
+              <td>Data Platform + Security</td>
+              <td>Deep dive into secure data architectures supporting clinical analytics and research use cases.</td>
+              <td>Data platform modernization opportunities in AMC accounts.</td>
+            </tr>
+            <tr>
+              <td>Apr 2027</td>
+              <td>AI-Ready Infrastructure Blueprint</td>
+              <td>Seminar</td>
+              <td>EDU, AMC</td>
+              <td>AI Readiness / Data Platform</td>
+              <td>Framework for building AI-ready infrastructure with scalable data services and governance controls.</td>
+              <td>New AI-adjacent infrastructure deals.</td>
+            </tr>
+
+            <tr>
+              <td>May 2027</td>
+              <td>SLG Compliance Accelerator</td>
+              <td>Executive Briefing</td>
+              <td>SLG</td>
+              <td>Security / Compliance</td>
+              <td>Agency leadership session on CJIS and FedRAMP-aligned architecture decision frameworks.</td>
+              <td>Executive confidence and accelerated compliance projects.</td>
+            </tr>
+            <tr>
+              <td>May 2027</td>
+              <td>Hybrid Operations Scale Lab</td>
+              <td>Hands-on Lab</td>
+              <td>SLG, EDU</td>
+              <td>Azure Arc + Operations</td>
+              <td>Hands-on scale patterns for hybrid operations, policy remediation, and platform observability.</td>
+              <td>Platform standardization and expanded Azure consumption.</td>
+            </tr>
+
+            <tr>
+              <td>Jun 2027</td>
+              <td>FY27 Infrastructure Outcomes Summit <span class="tag-major">Q4 Flagship</span></td>
+              <td>Executive Briefing</td>
+              <td>EDU, SLG, AMC</td>
+              <td>Outcome Review + FY28 Planning</td>
+              <td>Executive review of annual outcomes and co-planning workshop to lock FY28 strategic initiatives.</td>
+              <td>Renewed executive alignment and next-year pipeline carryover.</td>
+            </tr>
+            <tr>
+              <td>Jun 2027</td>
+              <td>Modernization Success Showcase</td>
+              <td>Seminar</td>
+              <td>EDU, SLG, AMC</td>
+              <td>Migration + DR + AVD Highlights</td>
+              <td>Customer story-based seminar showcasing deployed architectures and measurable business impact.</td>
+              <td>Peer influence and expansion in late-stage pursuits.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="lab-strategy">
+      <div class="section-header">
+        <h2>4. Hands-On Lab Strategy (Deep Dive)</h2>
+        <p class="section-subtitle">Quarterly lab cadence to convert strategy discussions into execution-ready opportunities.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Q1 (Jul-Sep): Azure Landing Zones Lab</h3>
+          <p><strong>Objective:</strong> Build governance-ready landing zone blueprints for multi-subscription public sector environments.</p>
+          <p><strong>Target Persona:</strong> ITDM, Cloud Architect, Platform Engineer</p>
+          <p><strong>Business Outcome:</strong> Standardized cloud foundation with improved control, speed, and accountability.</p>
+          <p><strong>Opportunity Motion:</strong> Moves customers from assessment to architecture-approved pilot and funded landing zone deployment.</p>
+        </article>
+
+        <article class="card">
+          <h3>Q2 (Oct-Dec): AVD Deployment Lab</h3>
+          <p><strong>Objective:</strong> Deploy secure Azure Virtual Desktop reference patterns for workforce and campus scenarios.</p>
+          <p><strong>Target Persona:</strong> End-User Computing Lead, Cloud Engineer, Security Architect</p>
+          <p><strong>Business Outcome:</strong> Better endpoint agility, security posture, and user experience.</p>
+          <p><strong>Opportunity Motion:</strong> Moves customers from pilot desktops to scaled production rollout and managed operations.</p>
+        </article>
+
+        <article class="card">
+          <h3>Q3 (Jan-Mar): Hybrid Operations with Azure Arc</h3>
+          <p><strong>Objective:</strong> Operationalize centralized management, compliance policy, and monitoring across hybrid estates.</p>
+          <p><strong>Target Persona:</strong> Infrastructure Manager, Operations Architect, Platform Engineer</p>
+          <p><strong>Business Outcome:</strong> Unified operations model that lowers risk and simplifies governance.</p>
+          <p><strong>Opportunity Motion:</strong> Moves customers from fragmented tooling to enterprise-standard hybrid platform contracts.</p>
+        </article>
+
+        <article class="card">
+          <h3>Q4 (Apr-Jun): SQL Modernization + DR with ASR</h3>
+          <p><strong>Objective:</strong> Modernize SQL workloads and implement tested recovery pathways for critical services.</p>
+          <p><strong>Target Persona:</strong> Data Architect, Application Owner, DR Lead</p>
+          <p><strong>Business Outcome:</strong> Improved performance, resiliency, and compliance for high-value workloads.</p>
+          <p><strong>Opportunity Motion:</strong> Moves customers from design workshops to funded migration and resiliency implementation programs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="vertical-strategies">
+      <div class="section-header">
+        <h2>5. Vertical-Specific Strategies</h2>
+        <p class="section-subtitle">Targeted motions tailored to EDU, SLG, and AMC priorities.</p>
+      </div>
+
+      <article class="card" style="margin-bottom: 12px;">
+        <h3>A. Education Strategy</h3>
+        <p>Prioritize scalable research computing, campus-wide VDI modernization, and secure data platforms that support digital learning and institutional analytics.</p>
+        <div class="pill-row">
+          <span class="pill">Research Computing / HPC</span>
+          <span class="pill">Campus VDI (AVD)</span>
+          <span class="pill">Secure Data Platforms</span>
+        </div>
+        <h4 style="margin-top: 10px;">Targeted Event Ideas (3-5)</h4>
+        <ul>
+          <li>Research Compute Acceleration Day (HPC cluster burst and cost control patterns)</li>
+          <li>Digital Campus VDI Blueprint Workshop (AVD for labs and remote learning)</li>
+          <li>Student Data Security Seminar (identity, governance, and data zone architecture)</li>
+          <li>Education AI Readiness Roundtable (data platform prerequisites for AI initiatives)</li>
+        </ul>
+      </article>
+
+      <article class="card" style="margin-bottom: 12px;">
+        <h3>B. SLG Strategy</h3>
+        <p>Center on compliance-first modernization with resilient service delivery, secure hybrid operations, and systematic retirement of legacy infrastructure.</p>
+        <div class="pill-row">
+          <span class="pill">CJIS / FedRAMP / FIPS</span>
+          <span class="pill">DR / Resiliency</span>
+          <span class="pill">Legacy Modernization</span>
+        </div>
+        <h4 style="margin-top: 10px;">Targeted Event Ideas (3-5)</h4>
+        <ul>
+          <li>Compliance by Design Bootcamp (control mapping to Azure policy and architecture)</li>
+          <li>Citizen Service Resiliency Drill (DR scenario simulation and runbook validation)</li>
+          <li>Legacy App Modernization Factory (rapid decomposition and migration planning)</li>
+          <li>Hybrid Governance Forum (Arc-enabled policy and operations at agency scale)</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>C. AMC Strategy</h3>
+        <p>Drive secure transformation of clinical and adjacent enterprise workloads with high performance, strong data governance, and modernization of critical platforms.</p>
+        <div class="pill-row">
+          <span class="pill">Epic Workload Transformation</span>
+          <span class="pill">Clinical App Modernization</span>
+          <span class="pill">Secure PHI Data Workloads</span>
+        </div>
+        <h4 style="margin-top: 10px;">Targeted Event Ideas (3-5)</h4>
+        <ul>
+          <li>Epic-Adjacent Infrastructure Modernization Workshop (performance and integration focus)</li>
+          <li>Clinical Application Reliability Lab (availability architecture and observability)</li>
+          <li>PHI Data Security Deep Dive (secure enclave design and governance controls)</li>
+          <li>Research + Clinical Data Convergence Session (platform strategy for analytics at scale)</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="innovative-strategies">
+      <div class="section-header">
+        <h2>6. Innovative Opportunity Creation Strategies</h2>
+        <p class="section-subtitle">Creative engagement formats designed to surface new demand and accelerate decisions.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table aria-label="Innovative opportunity creation strategies">
+          <thead>
+            <tr>
+              <th>Idea</th>
+              <th>Short Description</th>
+              <th>Target Audience</th>
+              <th>Expected Business Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cloud Design Clinics</td>
+              <td>Interactive architecture working sessions with live design reviews on active customer priorities.</td>
+              <td>Architects, engineers, workload owners</td>
+              <td>Faster technical qualification and stronger services attach.</td>
+            </tr>
+            <tr>
+              <td>Executive Strategy Roundtables</td>
+              <td>Small-group peer forums for CIO/CTO leaders to align modernization roadmaps and investment priorities.</td>
+              <td>CIO, CTO, VP Infrastructure</td>
+              <td>Executive sponsorship, larger strategic deal shaping, and budget alignment.</td>
+            </tr>
+            <tr>
+              <td>Migration Factory Days</td>
+              <td>Time-boxed execution sessions that move assessed workloads into actionable migration plans and pilot backlogs.</td>
+              <td>Program managers, cloud teams, partners</td>
+              <td>Improved conversion from discovery to funded migration activity.</td>
+            </tr>
+            <tr>
+              <td>Industry Use-Case Hackathons</td>
+              <td>Vertical-focused innovation events pairing infrastructure modernization with domain-specific scenarios.</td>
+              <td>EDU, SLG, AMC technical teams</td>
+              <td>New solution opportunities and multi-workload pipeline growth.</td>
+            </tr>
+            <tr>
+              <td>AI + Infrastructure Innovation Labs</td>
+              <td>Hands-on labs connecting AI readiness requirements to secure infrastructure and data platform foundations.</td>
+              <td>Data leaders, platform architects, security teams</td>
+              <td>Creates AI-adjacent infrastructure demand and cross-solution expansion.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="impact-dashboard">
+      <div class="section-header">
+        <h2>7. Expected Business Impact Dashboard</h2>
+        <p class="section-subtitle">Outcome view by activity type to measure execution quality and strategic contribution.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table aria-label="Expected business impact dashboard">
+          <thead>
+            <tr>
+              <th>Activity Type</th>
+              <th>Expected Outcome</th>
+              <th>Strategic Value</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Seminar</td>
+              <td>Pipeline creation through broad demand generation and cross-account awareness.</td>
+              <td class="impact-high">High</td>
+              <td>Best for top-of-funnel momentum and regional signal amplification.</td>
+            </tr>
+            <tr>
+              <td>Hands-on Lab</td>
+              <td>Influenced revenue via pilot conversion, architecture validation, and faster technical close.</td>
+              <td class="impact-high">High</td>
+              <td>Strongest conversion motion from assessment to funded deployment.</td>
+            </tr>
+            <tr>
+              <td>Executive Event</td>
+              <td>Workload adoption through leadership alignment, budget planning, and strategic commitment.</td>
+              <td class="impact-high">High</td>
+              <td>Critical for unblocking complex multi-quarter initiatives.</td>
+            </tr>
+            <tr>
+              <td>Workshop</td>
+              <td>Pipeline quality improvements and opportunity expansion within active pursuits.</td>
+              <td class="impact-medium">Medium</td>
+              <td>Useful for shaping scope and aligning technical buying groups.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="footer-note">Planning horizon: FY27 (Jul 2026 - Jun 2027) | Region: Mid-Atlantic | Focus: Azure Infrastructure Growth</p>
+    </section>
+  </div>
+
+  <script>
+    // Update nav state on click for clearer section orientation.
+    (function () {
+      var navLinks = document.querySelectorAll('.top-nav a');
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.forEach(function (item) { item.classList.remove('active'); });
+          link.classList.add('active');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
